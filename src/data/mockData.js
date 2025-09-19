@@ -1,5 +1,63 @@
 import { faker } from '@faker-js/faker';
 
+// --- Start of New Predefined Images ---
+const PREDEFINED_IMAGES = {
+  medicine: [
+    'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=800',
+    'https://images.unsplash.com/photo-1628771065518-0d82f1938462?q=80&w=800',
+    'https://images.unsplash.com/photo-1550572017-536d563b724b?q=80&w=800',
+  ],
+  'skin-care': [
+    'https://images.unsplash.com/photo-1556228720-195a672e8a03?q=80&w=800',
+    'https://images.unsplash.com/photo-1590358669439-2aa405b38f82?q=80&w=800',
+    'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=800',
+  ],
+  'hair-care': [
+    'https://images.unsplash.com/photo-1629198735660-e39ea93f5a87?q=80&w=800',
+    'https://images.unsplash.com/photo-1599387822537-00f7a354b518?q=80&w=800',
+  ],
+  vitamins: [
+    'https://images.unsplash.com/photo-1607619056574-7d8d3ee536b2?q=80&w=800',
+    'https://images.unsplash.com/photo-1627384113710-424c9384f914?q=80&w=800',
+  ],
+  fitness: [
+    'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=800',
+    'https://images.unsplash.com/photo-1549060279-7e168f3282fd?q=80&w=800',
+  ],
+  'mom-baby': [
+    'https://images.unsplash.com/photo-1525835363741-bf3dfb0f73f7?q=80&w=800',
+    'https://images.unsplash.com/photo-1604432139413-2b9c65a12f6c?q=80&w=800',
+  ],
+  'women-health': [
+    'https://images.unsplash.com/photo-1571019599539-a06a29855268?q=80&w=800',
+  ],
+  'men-health': [
+    'https://images.unsplash.com/photo-1622254939237-b58e70d7ed92?q=80&w=800',
+  ],
+  'oral-care': [
+    'https://images.unsplash.com/photo-1600170052213-2b2938871653?q=80&w=800',
+  ],
+  beauty: [
+    'https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=800',
+  ],
+  'health-devices': [
+    'https://images.unsplash.com/photo-1615486517864-9f3275a45778?q=80&w=800',
+  ],
+  optics: [
+    'https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=800',
+  ],
+  perfumes: [
+    'https://images.unsplash.com/photo-1541643600914-78b084683601?q=80&w=800',
+  ],
+  'skin-analysis': [
+    'https://images.unsplash.com/photo-1587825023399-a46113647820?q=80&w=800',
+  ],
+  default: [
+    'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=800',
+  ]
+};
+// --- End of New Predefined Images ---
+
 const USER_ROLES = {
   CUSTOMER: 'customer',
   ADMIN: 'admin',
@@ -21,13 +79,22 @@ export const PRODUCT_BADGES = {
 };
 
 const CATEGORIES = [
-  { id: 'cosmetics', name: 'Cosmetics', nameAr: 'مستحضرات تجميل', icon: 'Sparkles', image: `https://img-wrapper.vercel.app/image?url=https://img-wrapper.vercel.app/image?url=https://placehold.co/300x200/E0F2FE/0EA5E9?text=Cosmetics` },
-  { id: 'general_medicines', name: 'General Medicines', nameAr: 'أدوية عامة', icon: 'Pill', image: `https://img-wrapper.vercel.app/image?url=https://img-wrapper.vercel.app/image?url=https://placehold.co/300x200/D1FAE5/10B981?text=Medicines` },
-  { id: 'prescription_medicines', name: 'Prescription Medicines', nameAr: 'أدوية بوصفة طبية', icon: 'FileText', image: `https://img-wrapper.vercel.app/image?url=https://img-wrapper.vercel.app/image?url=https://placehold.co/300x200/DBEAFE/3B82F6?text=Rx+Meds` },
-  { id: 'vitamins_supplements', name: 'Vitamins & Supplements', nameAr: 'فيتامينات ومكملات', icon: 'Activity', image: `https://img-wrapper.vercel.app/image?url=https://img-wrapper.vercel.app/image?url=https://placehold.co/300x200/E0E7FF/6366F1?text=Vitamins` },
-  { id: 'baby_child_care', name: 'Baby & Child Care', nameAr: 'رعاية الأطفال', icon: 'Baby', image: `https://img-wrapper.vercel.app/image?url=https://img-wrapper.vercel.app/image?url=https://placehold.co/300x200/FEE2E2/EF4444?text=Baby+Care` },
-  { id: 'medical_devices', name: 'Medical Devices', nameAr: 'أجهزة طبية', icon: 'Thermometer', image: `https://img-wrapper.vercel.app/image?url=https://img-wrapper.vercel.app/image?url=https://placehold.co/300x200/F3E8FF/A855F7?text=Devices` },
+  { id: 'medicine', name: 'Medicine', nameAr: 'أدوية', icon: 'Pill', image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=800' },
+  { id: 'skin-care', name: 'Skin Care', nameAr: 'العناية بالبشرة', icon: 'Sparkles', image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?q=80&w=800' },
+  { id: 'hair-care', name: 'Hair Care', nameAr: 'العناية بالشعر', icon: 'Wind', image: 'https://images.unsplash.com/photo-1629198735660-e39ea93f5a87?q=80&w=800' },
+  { id: 'vitamins', name: 'Vitamins', nameAr: 'فيتامينات', icon: 'Activity', image: 'https://images.unsplash.com/photo-1607619056574-7d8d3ee536b2?q=80&w=800' },
+  { id: 'fitness', name: 'Fitness', nameAr: 'اللياقة البدنية', icon: 'HeartPulse', image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=800' },
+  { id: 'mom-baby', name: 'Mom & Baby', nameAr: 'الأم والطفل', icon: 'Baby', image: 'https://images.unsplash.com/photo-1525835363741-bf3dfb0f73f7?q=80&w=800' },
+  { id: 'women-health', name: 'Women', nameAr: 'صحة المرأة', icon: 'PersonStanding', image: 'https://images.unsplash.com/photo-1571019599539-a06a29855268?q=80&w=800' },
+  { id: 'men-health', name: 'Men', nameAr: 'صحة الرجل', icon: 'User', image: 'https://images.unsplash.com/photo-1622254939237-b58e70d7ed92?q=80&w=800' },
+  { id: 'oral-care', name: 'Oral Care', nameAr: 'العناية بالفم', icon: 'Smile', image: 'https://images.unsplash.com/photo-1600170052213-2b2938871653?q=80&w=800' },
+  { id: 'beauty', name: 'Beauty', nameAr: 'الجمال', icon: 'Paintbrush', image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=800' },
+  { id: 'health-devices', name: 'Health Devices', nameAr: 'أجهزة صحية', icon: 'Thermometer', image: 'https://images.unsplash.com/photo-1615486517864-9f3275a45778?q=80&w=800' },
+  { id: 'optics', name: 'Optics', nameAr: 'البصريات', icon: 'Glasses', image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=800' },
+  { id: 'perfumes', name: 'Perfumes', nameAr: 'العطور', icon: 'SprayCan', image: 'https://images.unsplash.com/photo-1541643600914-78b084683601?q=80&w=800' },
+  { id: 'skin-analysis', name: 'Skin Analysis', nameAr: 'تحليل البشرة', icon: 'ScanFace', image: 'https://images.unsplash.com/photo-1587825023399-a46113647820?q=80&w=800' },
 ];
+
 
 const generateProducts = (count) => {
   return Array.from({ length: count }, (_, i) => {
@@ -35,6 +102,8 @@ const generateProducts = (count) => {
     const hasOffer = faker.datatype.boolean(0.3);
     const prescriptionRequired = faker.datatype.boolean(0.2);
     const category = faker.helpers.arrayElement(CATEGORIES);
+    
+    const imagePool = PREDEFINED_IMAGES[category.id] || PREDEFINED_IMAGES.default;
 
     return {
       id: faker.string.uuid(),
@@ -44,8 +113,8 @@ const generateProducts = (count) => {
       descriptionAr: `وصف المنتج ${i + 1}`,
       price: price,
       offerPrice: hasOffer ? parseFloat((price * faker.number.float({ min: 0.7, max: 0.9 })).toFixed(2)) : null,
-      thumbnail: `https://img-wrapper.vercel.app/image?url=https://img-wrapper.vercel.app/image?url=https://placehold.co/400x400/${faker.color.rgb({ format: 'hex', casing: 'upper' }).substring(1)}/${faker.color.rgb({ format: 'hex', casing: 'upper' }).substring(1)}?text=${encodeURIComponent(faker.lorem.word())}`,
-      images: Array.from({ length: faker.number.int({ min: 2, max: 5 }) }, () => `https://img-wrapper.vercel.app/image?url=https://img-wrapper.vercel.app/image?url=https://placehold.co/800x800/${faker.color.rgb({ format: 'hex', casing: 'upper' }).substring(1)}/${faker.color.rgb({ format: 'hex', casing: 'upper' }).substring(1)}?text=Product+Image`),
+      thumbnail: faker.helpers.arrayElement(imagePool),
+      images: Array.from({ length: faker.number.int({ min: 2, max: 5 }) }, () => faker.helpers.arrayElement(imagePool)),
       category: category.id,
       categoryName: category.name,
       categoryNameAr: category.nameAr,
@@ -70,7 +139,7 @@ const generateProducts = (count) => {
 export const mockUser = {
   id: faker.string.uuid(),
   name: faker.person.firstName() + ' ' + faker.person.lastName(),
-  profilePictureUrl: `https://ui-avatars.com/api/?name=${encodeURIComponent(faker.person.firstName() + ' ' + faker.person.lastName())}&background=0EA5E9&color=fff&size=128&font-size=0.4&bold=true`,
+  profilePictureUrl: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=128',
   role: USER_ROLES.CUSTOMER,
   loyaltyTier: faker.helpers.arrayElement(Object.values(LOYALTY_TIERS)),
   loyaltyPoints: faker.number.int({ min: 0, max: 5000 }),
@@ -87,9 +156,9 @@ export const mockProducts = generateProducts(50);
 export const mockCategories = CATEGORIES;
 
 export const mockPromotionalBanners = [
-  { id: 'banner1', imageUrl: `https://img-wrapper.vercel.app/image?url=https://img-wrapper.vercel.app/image?url=https://placehold.co/1200x400/10B981/FFFFFF?text=Summer+Sale!+Up+to+50%25+OFF`, altText: 'Summer Sale', altTextAr: 'تخفيضات الصيف! خصم يصل إلى 50٪', link: '/products?tag=summer-sale' },
-  { id: 'banner2', imageUrl: `https://img-wrapper.vercel.app/image?url=https://img-wrapper.vercel.app/image?url=https://placehold.co/1200x400/3B82F6/FFFFFF?text=New+Arrivals+This+Week`, altText: 'New Arrivals', altTextAr: 'وصل حديثاً هذا الأسبوع', link: '/products?sort=newest' },
-  { id: 'banner3', imageUrl: `https://img-wrapper.vercel.app/image?url=https://img-wrapper.vercel.app/image?url=https://placehold.co/1200x400/0EA5E9/FFFFFF?text=Bundle+Deals+for+Families`, altText: 'Bundle Deals', altTextAr: 'عروض الباقات للعائلات', link: '/products?category=bundles' },
+  { id: 'banner1', imageUrl: 'https://images.unsplash.com/photo-1576633587382-139b316aaceb?q=80&w=1200', altText: 'Summer Sale', altTextAr: 'تخفيضات الصيف! خصم يصل إلى 50٪', link: '/products?tag=summer-sale' },
+  { id: 'banner2', imageUrl: 'https://images.unsplash.com/photo-1590358669439-2aa405b38f82?q=80&w=1200', altText: 'New Arrivals', altTextAr: 'وصل حديثاً هذا الأسبوع', link: '/products?sort=newest' },
+  { id: 'banner3', imageUrl: 'https://images.unsplash.com/photo-1627384113710-424c9384f914?q=80&w=1200', altText: 'Bundle Deals', altTextAr: 'عروض الباقات للعائلات', link: '/products?category=bundles' },
 ];
 
 export const mockQuickAccessItems = (language) => [
@@ -188,11 +257,11 @@ export const mockLiveTrackingData = (orderId) => {
         orderId,
         driverName: faker.person.fullName(),
         driverPhone: faker.phone.number(),
-        driverImage: `https://img-wrapper.vercel.app/image?url=https://img-wrapper.vercel.app/image?url=https://placehold.co/100x100/${faker.color.rgb({ format: 'hex', casing: 'upper' }).substring(1)}/FFFFFF?text=${faker.person.firstName().charAt(0)}`,
+        driverImage: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=128',
         eta: new Date(new Date().getTime() + faker.number.int({min: 15, max: 120}) * 60000).toISOString(),
         currentLocation: { lat: faker.location.latitude(), lng: faker.location.longitude() },
         deliveryAddress: order.deliveryAddress.address,
-        mapImage: `https://img-wrapper.vercel.app/image?url=https://img-wrapper.vercel.app/image?url=https://placehold.co/600x400/E0F2FE/0EA5E9?text=Live+Map+View`,
+        mapImage: 'https://images.unsplash.com/photo-1593954366632-349034a24f6f?q=80&w=600',
     };
 };
 
@@ -279,7 +348,7 @@ export const mockCampaigns = [
 
 export const mockLoyaltyTransactions = [
   { id: 'lt1', date: faker.date.recent({ days: 5 }).toISOString(), description: 'Earned from Order #ORD123', descriptionAr: 'مكتسبة من طلب #ORD123', points: '+150' },
-  { id: 'lt2', date: faker.date.recent({ days: 10 }).toISOString(), description: 'Redeemed for AED 20 Voucher', descriptionAr: 'مستبدلة بقسيمة 20 د.إ', points: '-200' },
+  { id: 'lt2', date: faker.date.recent({ days: 10 }).toISOString(), description: 'Redeemed for OMR 2 Voucher', descriptionAr: 'مستبدلة بقسيمة 2 ر.ع.', points: '-200' },
   { id: 'lt3', date: faker.date.recent({ days: 15 }).toISOString(), description: 'Birthday Bonus', descriptionAr: 'مكافأة عيد الميلاد', points: '+100' },
   { id: 'lt4', date: faker.date.recent({ days: 20 }).toISOString(), description: 'Earned from Product Review', descriptionAr: 'مكتسبة من مراجعة منتج', points: '+25' },
   { id: 'lt5', date: faker.date.past({ months: 13 }).toISOString(), description: 'Points Expired', descriptionAr: 'نقاط منتهية الصلاحية', points: '-50' },

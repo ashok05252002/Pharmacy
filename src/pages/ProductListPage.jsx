@@ -219,7 +219,7 @@ const ProductListPage = () => {
           </motion.div>
         ) : (
           <div className="text-center py-12">
-            <img src={`https://img-wrapper.vercel.app/image?url=https://img-wrapper.vercel.app/image?url=https://placehold.co/300x300/E0F2FE/0EA5E9?text=${language === 'ar' ? 'لا+منتجات' : 'No+Products'}`} alt={language === 'ar' ? 'لا توجد منتجات' : 'No Products Found'} className="mx-auto mb-6 w-40 h-40 opacity-70"/>
+            <img src="https://images.unsplash.com/photo-1577741314755-325d41920c7a?q=80&w=300" alt={language === 'ar' ? 'لا توجد منتجات' : 'No Products Found'} className="mx-auto mb-6 w-40 h-40 opacity-70 rounded-lg"/>
             <h3 className="text-xl font-semibold text-gray-700 mb-2">
               {language === 'ar' ? 'لم يتم العثور على منتجات' : 'No Products Found'}
             </h3>

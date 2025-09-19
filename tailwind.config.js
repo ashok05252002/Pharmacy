@@ -7,16 +7,20 @@ export default {
   theme: {
     extend: {
       colors: {
-        'medical-primary': '#118BFA',    // New Primary Blue
-        'medical-secondary': '#0EA5E9', // Sky 500 (Existing - can keep as a lighter blue accent)
-        'medical-accent': '#3B82F6',    // Blue 500 (Existing - can keep as another blue accent)
-        'medical-dark': '#0D6EFD',      // Darker shade of new primary (e.g., Bootstrap's primary dark)
-        'medical-light': '#E7F3FF',     // Lighter shade of new primary (e.g., a very light blue)
-        'medical-gray': '#6B7280',      // Gray 500 (Existing)
+        'medical-primary': '#108BFA',      // New Primary Blue
+        'medical-secondary': '#732675',   // New Secondary Purple
+        'medical-accent': '#FFC600',       // New Accent Mustard
+        'medical-gray': '#696969',         // New Grey
+        'medical-dark': '#0d73d9',         // Darker shade of new primary
+        'medical-light': '#e7f3ff',        // Lighter shade of new primary
+        'blue-purple': '#108BFA',
+        'purple': '#732675',
+        'mustard': '#FFC600',
+        'grey': '#696969',
       },
       fontFamily: {
         sans: [
-            // Reverted to Tailwind's default sans-serif stack by removing 'Inter'
+            'Montserrat', 
             'ui-sans-serif', 
             'system-ui', 
             '-apple-system', 

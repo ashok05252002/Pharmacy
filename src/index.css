@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 body {
-  /* font-family: 'Inter', sans-serif; Removed explicit Inter font */
-  @apply bg-medical-light/70 text-gray-900; /* Slightly lighter bg */
+  font-family: 'Montserrat', sans-serif; /* Set Montserrat as base font */
+  @apply bg-medical-light/70 text-gray-900;
 }
 
 /* For Arabic text direction */
@@ -98,7 +98,7 @@ body {
 
 /* Prose styling for product descriptions */
 .prose {
-    color: theme('colors.gray.700');
+    color: theme('colors.medical-gray');
 }
 .prose h1, .prose h2, .prose h3, .prose h4 {
     color: theme('colors.gray.800');
@@ -111,9 +111,9 @@ body {
     text-decoration: underline;
 }
 .prose strong {
-    color: theme('colors.gray.700');
+    color: theme('colors.medical-gray');
 }
 .prose blockquote {
     border-left-color: theme('colors.medical-primary');
-    color: theme('colors.gray.700');
+    color: theme('colors.medical-gray');
 }
