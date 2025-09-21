@@ -1,12 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
-import { mockUser, mockPromotionalBanners, mockQuickAccessItems, mockCategories, mockProducts } from '../data/mockData';
+import { mockUser, mockPromotionalBanners, mockQuickAccessItems, mockCategories, mockProducts, mockSignatureBrands } from '../data/mockData';
 import { ChevronRight, Sparkles, Pill, FileText, Activity, Baby, Thermometer, UploadCloud, Package, MessageSquare, Award } from 'lucide-react';
-import Slider from "react-slick"; // For banners and featured products
-import ProductCard from '../components/product/ProductCard'; // We will create this
+import Slider from "react-slick";
+import ProductCard from '../components/product/ProductCard';
 
-// Import slick-carousel CSS
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import { motion } from 'framer-motion';
@@ -29,6 +28,7 @@ const HomePage = () => {
     autoplay: true,
     autoplaySpeed: 3000,
     rtl: language === 'ar',
+    arrows: false,
     appendDots: dots => (
       <div> <ul style={{ margin: "0px", bottom: "15px" }}> {dots} </ul> </div>
     ),
@@ -50,14 +50,23 @@ const HomePage = () => {
       { breakpoint: 640, settings: { slidesToShow: 1.5 } },
     ]
   };
+  
+  const signatureSliderSettings = {
+    dots: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 3.5,
+    slidesToScroll: 1,
+    rtl: language === 'ar',
+    responsive: [
+      { breakpoint: 1280, settings: { slidesToShow: 2.5 } },
+      { breakpoint: 1024, settings: { slidesToShow: 2.2 } },
+      { breakpoint: 768, settings: { slidesToShow: 1.5 } },
+      { breakpoint: 640, settings: { slidesToShow: 1.1 } },
+    ]
+  };
 
   const featuredProducts = mockProducts.filter(p => p.rating > 4.5).slice(0, 8);
-  const trendingItems = mockProducts.sort((a,b) => b.reviewsCount - a.reviewsCount).slice(0, 8);
-  const bundleDeals = mockProducts.filter(p => p.name.toLowerCase().includes('bundle') || p.name.toLowerCase().includes('pack')).slice(0,8);
-   if(bundleDeals.length < 3) { // ensure some bundles if not found by name
-      bundleDeals.push(...mockProducts.slice(10,13));
-   }
-
 
   const Section = ({ title, titleAr, children, viewAllLink }) => (
     <motion.section 
@@ -92,18 +101,18 @@ const HomePage = () => {
         </p>
       </motion.div>
 
-      {/* Promotional Banners */}
+      {/* Promotional Banners - Fixed Aspect Ratio */}
       <motion.div 
         initial={{ opacity: 0, scale: 0.95 }} 
         animate={{ opacity: 1, scale: 1 }} 
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="rounded-xl overflow-hidden shadow-lg"
+        className="w-full aspect-video md:aspect-[3/1] rounded-xl overflow-hidden shadow-lg"
       >
-        <Slider {...bannerSettings}>
+        <Slider {...bannerSettings} className="h-full">
           {mockPromotionalBanners.map(banner => (
-            <div key={banner.id}>
-              <Link to={banner.link}>
-                <img src={banner.imageUrl} alt={language === 'ar' ? banner.altTextAr : banner.altText} className="w-full h-auto object-cover" />
+            <div key={banner.id} className="h-full">
+              <Link to={banner.link} className="h-full block">
+                <img src={banner.imageUrl} alt={language === 'ar' ? banner.altTextAr : banner.altText} className="w-full h-full object-cover" />
               </Link>
             </div>
           ))}
@@ -133,7 +142,6 @@ const HomePage = () => {
       <Section title="Shop by Category" titleAr="تسوق حسب الفئة" viewAllLink="/categories">
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4">
           {mockCategories.slice(0,6).map(category => {
-             const IconComponent = iconMap[category.icon];
              return (
               <Link 
                 key={category.id} 
@@ -144,7 +152,6 @@ const HomePage = () => {
                     <img src={category.image} alt={language === 'ar' ? category.nameAr : category.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"/>
                 </div>
                 <div className="p-2 sm:p-3 text-center bg-white">
-                  {/* IconComponent && <IconComponent size={20} className="mx-auto mb-1 text-medical-accent group-hover:text-medical-primary transition-colors" /> */}
                   <h3 className="text-xs sm:text-sm font-semibold text-gray-700 group-hover:text-medical-primary transition-colors truncate">
                     {language === 'ar' ? category.nameAr : category.name}
                   </h3>
@@ -155,23 +162,6 @@ const HomePage = () => {
         </div>
       </Section>
       
-      {/* Loyalty Tier & Points */}
-      <Section title="Your Loyalty Status" titleAr="حالة ولائك">
-        <div className="bg-gradient-to-r from-medical-secondary to-medical-primary p-6 rounded-xl shadow-lg text-white flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
-          <div>
-            <p className="text-sm opacity-80">{language === 'ar' ? 'مستواك الحالي' : 'Your Current Tier'}</p>
-            <p className="text-2xl sm:text-3xl font-bold">{language === 'ar' ? mockUser.loyaltyTier === 'Silver' ? 'فضي' : mockUser.loyaltyTier === 'Gold' ? 'ذهبي' : 'بلاتيني' : mockUser.loyaltyTier}</p>
-          </div>
-          <div className="text-center sm:text-right rtl:sm:text-left">
-            <p className="text-sm opacity-80">{language === 'ar' ? 'رصيد نقاطك' : 'Your Points Balance'}</p>
-            <p className="text-2xl sm:text-3xl font-bold">{mockUser.loyaltyPoints.toLocaleString(language === 'ar' ? 'ar-EG' : 'en-US')}</p>
-          </div>
-          <Link to="/loyalty" className="bg-white/20 hover:bg-white/30 text-white font-semibold py-2 px-4 rounded-lg transition-colors text-sm sm:text-base">
-            {language === 'ar' ? 'عرض تفاصيل الولاء' : 'View Loyalty Details'}
-          </Link>
-        </div>
-      </Section>
-
       {/* Featured Products */}
       <Section title="Featured Products" titleAr="منتجات مميزة" viewAllLink="/products?filter=featured">
         <Slider {...productSliderSettings} className="-mx-2">
@@ -182,24 +172,22 @@ const HomePage = () => {
           ))}
         </Slider>
       </Section>
-
-      {/* Trending Items */}
-      <Section title="Trending Items" titleAr="الأكثر رواجاً" viewAllLink="/products?sort=popular">
-         <Slider {...productSliderSettings} className="-mx-2">
-          {trendingItems.map(product => (
-            <div key={product.id} className="px-2">
-              <ProductCard product={product} language={language} />
-            </div>
-          ))}
-        </Slider>
-      </Section>
-
-      {/* Bundle Deals */}
-      <Section title="Bundle Deals" titleAr="عروض الباقات" viewAllLink="/products?category=bundles">
-         <Slider {...productSliderSettings} className="-mx-2">
-          {bundleDeals.map(product => (
-            <div key={product.id} className="px-2">
-              <ProductCard product={product} language={language} />
+      
+      {/* NEW Signature Scents Section */}
+      <Section title="Signature Scents" titleAr="عطور مميزة">
+         <Slider {...signatureSliderSettings} className="-mx-2">
+          {mockSignatureBrands.map(brand => (
+            <div key={brand.id} className="px-2">
+              <Link to={brand.link}>
+                <div className="relative aspect-[3/4] rounded-2xl overflow-hidden group shadow-lg">
+                  <img src={brand.image} alt={brand.name} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                    <h3 className="text-xl font-bold">{language === 'ar' ? brand.nameAr : brand.name}</h3>
+                    <p className="text-sm opacity-80">{language === 'ar' ? 'اكتشف المجموعة' : 'Discover the Collection'}</p>
+                  </div>
+                </div>
+              </Link>
             </div>
           ))}
         </Slider>

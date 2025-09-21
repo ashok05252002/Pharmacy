@@ -1,61 +1,43 @@
 import { faker } from '@faker-js/faker';
 
 // --- Start of New Predefined Images ---
-const PREDEFINED_IMAGES = {
-  medicine: [
-    'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=800',
-    'https://images.unsplash.com/photo-1628771065518-0d82f1938462?q=80&w=800',
-    'https://images.unsplash.com/photo-1550572017-536d563b724b?q=80&w=800',
-  ],
-  'skin-care': [
-    'https://images.unsplash.com/photo-1556228720-195a672e8a03?q=80&w=800',
-    'https://images.unsplash.com/photo-1590358669439-2aa405b38f82?q=80&w=800',
-    'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=800',
-  ],
-  'hair-care': [
-    'https://images.unsplash.com/photo-1629198735660-e39ea93f5a87?q=80&w=800',
-    'https://images.unsplash.com/photo-1599387822537-00f7a354b518?q=80&w=800',
-  ],
-  vitamins: [
-    'https://images.unsplash.com/photo-1607619056574-7d8d3ee536b2?q=80&w=800',
-    'https://images.unsplash.com/photo-1627384113710-424c9384f914?q=80&w=800',
-  ],
-  fitness: [
-    'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=800',
-    'https://images.unsplash.com/photo-1549060279-7e168f3282fd?q=80&w=800',
-  ],
-  'mom-baby': [
-    'https://images.unsplash.com/photo-1525835363741-bf3dfb0f73f7?q=80&w=800',
-    'https://images.unsplash.com/photo-1604432139413-2b9c65a12f6c?q=80&w=800',
-  ],
-  'women-health': [
-    'https://images.unsplash.com/photo-1571019599539-a06a29855268?q=80&w=800',
-  ],
-  'men-health': [
-    'https://images.unsplash.com/photo-1622254939237-b58e70d7ed92?q=80&w=800',
-  ],
-  'oral-care': [
-    'https://images.unsplash.com/photo-1600170052213-2b2938871653?q=80&w=800',
-  ],
-  beauty: [
-    'https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=800',
-  ],
-  'health-devices': [
-    'https://images.unsplash.com/photo-1615486517864-9f3275a45778?q=80&w=800',
-  ],
-  optics: [
-    'https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=800',
-  ],
-  perfumes: [
-    'https://images.unsplash.com/photo-1541643600914-78b084683601?q=80&w=800',
-  ],
-  'skin-analysis': [
-    'https://images.unsplash.com/photo-1587825023399-a46113647820?q=80&w=800',
-  ],
-  default: [
-    'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=800',
-  ]
+const newBannerImages = [
+  'https://img.freepik.com/free-vector/medical-healthcare-banner-with-hexagonal-shapes_1017-26811.jpg?w=1380',
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCDiTxHnmiYlwELC-MKgA-YcrbwN0rfwT6Mw&s',
+  'https://www.shutterstock.com/image-illustration/3d-online-pharmacy-store-buy-260nw-2192726065.jpg'
+];
+
+const newProductImages = [
+  'https://www.shutterstock.com/image-photo/amber-dropper-bottle-mockup-design-260nw-2314690121.jpg',
+  'https://media.istockphoto.com/id/1386911707/vector/supplement-bottle-packaging-cosmetic-package-product-design-beauty-label-3d-supplement.jpg?s=612x612&w=0&k=20&c=-aLLMvs8W3GoVxlxKzyHD-LOw4JgXa3e6nv_Md0gVD8=',
+  'https://www.shutterstock.com/image-vector/package-template-design-label-mock-260nw-1185389986.jpg',
+  'https://www.shutterstock.com/image-photo/open-blank-golden-glass-cosmetic-260nw-2234875491.jpg',
+  'https://www.globalcosmeticsnews.com/wp-content/uploads/2020/09/Summer-Fridays-767x640.jpg',
+  'https://i.pinimg.com/564x/12/95/de/1295de97822dfb025cac5f94cea7df5b.jpg',
+  'https://igonatural.shop/cdn/shop/files/small_pixel_3_product_shot.jpg?v=1622816007&width=1500',
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVd3PtOT4mOx3JlmD4hBNOufu8kBuGhftwPA&s',
+  'https://static.vecteezy.com/system/resources/thumbnails/028/636/238/small_2x/set-of-cosmetic-products-mock-up-on-pink-background-photo.jpg',
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTb6ihvNki2EuYGXSpmrWT9uK1LqvyKPxaTzQ&s',
+  'https://img.freepik.com/free-photo/various-plastic-bottles-pills_23-2147983050.jpg?semt=ais_incoming&w=740&q=80'
+];
+
+const newCategoryImages = {
+  medicine: 'https://www.shutterstock.com/image-vector/medicine-bottle-pills-capsules-blister-260nw-1921291526.jpg',
+  'skin-care': 'https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?q=80&w=800&auto=format&fit=crop',
+  'hair-care': 'https://www.hcpwellness.in/wp-content/uploads/2024/02/haircare.jpg',
+  vitamins: 'https://www.a8h.com.au/content/wp-content/uploads/2021/05/Multivitamins-JPEG.jpg',
+  fitness: 'https://media.istockphoto.com/id/1397734203/vector/couple-fitness-logo-vector.jpg?s=612x612&w=0&k=20&c=o-MflGLdwx7Z5R2ZUyOwggGNCsMabFxCkODsRg4iMY0=',
+  'mom-baby': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoynn2ELxLdVdVF1BOPFwn-ycm8pstub0D-w&s',
+  'women-health': 'https://images.unsplash.com/photo-1571019599539-a06a29855268?q=80&w=800',
+  'men-health': 'https://images.unsplash.com/photo-1622254939237-b58e70d7ed92?q=80&w=800',
+  'oral-care': 'https://images.unsplash.com/photo-1600170052213-2b2938871653?q=80&w=800',
+  beauty: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=800',
+  'health-devices': 'https://images.unsplash.com/photo-1615486517864-9f3275a45778?q=80&w=800',
+  optics: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=800',
+  perfumes: 'https://images.unsplash.com/photo-1541643600914-78b084683601?q=80&w=800',
+  'skin-analysis': 'https://images.unsplash.com/photo-1587825023399-a46113647820?q=80&w=800',
 };
+
 // --- End of New Predefined Images ---
 
 const USER_ROLES = {
@@ -79,20 +61,20 @@ export const PRODUCT_BADGES = {
 };
 
 const CATEGORIES = [
-  { id: 'medicine', name: 'Medicine', nameAr: 'أدوية', icon: 'Pill', image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=800' },
-  { id: 'skin-care', name: 'Skin Care', nameAr: 'العناية بالبشرة', icon: 'Sparkles', image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?q=80&w=800' },
-  { id: 'hair-care', name: 'Hair Care', nameAr: 'العناية بالشعر', icon: 'Wind', image: 'https://images.unsplash.com/photo-1629198735660-e39ea93f5a87?q=80&w=800' },
-  { id: 'vitamins', name: 'Vitamins', nameAr: 'فيتامينات', icon: 'Activity', image: 'https://images.unsplash.com/photo-1607619056574-7d8d3ee536b2?q=80&w=800' },
-  { id: 'fitness', name: 'Fitness', nameAr: 'اللياقة البدنية', icon: 'HeartPulse', image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=800' },
-  { id: 'mom-baby', name: 'Mom & Baby', nameAr: 'الأم والطفل', icon: 'Baby', image: 'https://images.unsplash.com/photo-1525835363741-bf3dfb0f73f7?q=80&w=800' },
-  { id: 'women-health', name: 'Women', nameAr: 'صحة المرأة', icon: 'PersonStanding', image: 'https://images.unsplash.com/photo-1571019599539-a06a29855268?q=80&w=800' },
-  { id: 'men-health', name: 'Men', nameAr: 'صحة الرجل', icon: 'User', image: 'https://images.unsplash.com/photo-1622254939237-b58e70d7ed92?q=80&w=800' },
-  { id: 'oral-care', name: 'Oral Care', nameAr: 'العناية بالفم', icon: 'Smile', image: 'https://images.unsplash.com/photo-1600170052213-2b2938871653?q=80&w=800' },
-  { id: 'beauty', name: 'Beauty', nameAr: 'الجمال', icon: 'Paintbrush', image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=800' },
-  { id: 'health-devices', name: 'Health Devices', nameAr: 'أجهزة صحية', icon: 'Thermometer', image: 'https://images.unsplash.com/photo-1615486517864-9f3275a45778?q=80&w=800' },
-  { id: 'optics', name: 'Optics', nameAr: 'البصريات', icon: 'Glasses', image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=800' },
-  { id: 'perfumes', name: 'Perfumes', nameAr: 'العطور', icon: 'SprayCan', image: 'https://images.unsplash.com/photo-1541643600914-78b084683601?q=80&w=800' },
-  { id: 'skin-analysis', name: 'Skin Analysis', nameAr: 'تحليل البشرة', icon: 'ScanFace', image: 'https://images.unsplash.com/photo-1587825023399-a46113647820?q=80&w=800' },
+  { id: 'medicine', name: 'Medicine', nameAr: 'أدوية', icon: 'Pill', image: newCategoryImages.medicine },
+  { id: 'skin-care', name: 'Skin Care', nameAr: 'العناية بالبشرة', icon: 'Sparkles', image: newCategoryImages['skin-care'] },
+  { id: 'hair-care', name: 'Hair Care', nameAr: 'العناية بالشعر', icon: 'Wind', image: newCategoryImages['hair-care'] },
+  { id: 'vitamins', name: 'Vitamins', nameAr: 'فيتامينات', icon: 'Activity', image: newCategoryImages.vitamins },
+  { id: 'fitness', name: 'Fitness', nameAr: 'اللياقة البدنية', icon: 'HeartPulse', image: newCategoryImages.fitness },
+  { id: 'mom-baby', name: 'Mom & Baby', nameAr: 'الأم والطفل', icon: 'Baby', image: newCategoryImages['mom-baby'] },
+  { id: 'women-health', name: 'Women', nameAr: 'صحة المرأة', icon: 'PersonStanding', image: newCategoryImages['women-health'] },
+  { id: 'men-health', name: 'Men', nameAr: 'صحة الرجل', icon: 'User', image: newCategoryImages['men-health'] },
+  { id: 'oral-care', name: 'Oral Care', nameAr: 'العناية بالفم', icon: 'Smile', image: newCategoryImages['oral-care'] },
+  { id: 'beauty', name: 'Beauty', nameAr: 'الجمال', icon: 'Paintbrush', image: newCategoryImages.beauty },
+  { id: 'health-devices', name: 'Health Devices', nameAr: 'أجهزة صحية', icon: 'Thermometer', image: newCategoryImages['health-devices'] },
+  { id: 'optics', name: 'Optics', nameAr: 'البصريات', icon: 'Glasses', image: newCategoryImages.optics },
+  { id: 'perfumes', name: 'Perfumes', nameAr: 'العطور', icon: 'SprayCan', image: newCategoryImages.perfumes },
+  { id: 'skin-analysis', name: 'Skin Analysis', nameAr: 'تحليل البشرة', icon: 'ScanFace', image: newCategoryImages['skin-analysis'] },
 ];
 
 
@@ -103,7 +85,7 @@ const generateProducts = (count) => {
     const prescriptionRequired = faker.datatype.boolean(0.2);
     const category = faker.helpers.arrayElement(CATEGORIES);
     
-    const imagePool = PREDEFINED_IMAGES[category.id] || PREDEFINED_IMAGES.default;
+    const image = faker.helpers.arrayElement(newProductImages);
 
     return {
       id: faker.string.uuid(),
@@ -113,8 +95,8 @@ const generateProducts = (count) => {
       descriptionAr: `وصف المنتج ${i + 1}`,
       price: price,
       offerPrice: hasOffer ? parseFloat((price * faker.number.float({ min: 0.7, max: 0.9 })).toFixed(2)) : null,
-      thumbnail: faker.helpers.arrayElement(imagePool),
-      images: Array.from({ length: faker.number.int({ min: 2, max: 5 }) }, () => faker.helpers.arrayElement(imagePool)),
+      thumbnail: image,
+      images: Array.from({ length: faker.number.int({ min: 2, max: 4 }) }, () => faker.helpers.arrayElement(newProductImages)),
       category: category.id,
       categoryName: category.name,
       categoryNameAr: category.nameAr,
@@ -156,9 +138,40 @@ export const mockProducts = generateProducts(50);
 export const mockCategories = CATEGORIES;
 
 export const mockPromotionalBanners = [
-  { id: 'banner1', imageUrl: 'https://images.unsplash.com/photo-1576633587382-139b316aaceb?q=80&w=1200', altText: 'Summer Sale', altTextAr: 'تخفيضات الصيف! خصم يصل إلى 50٪', link: '/products?tag=summer-sale' },
-  { id: 'banner2', imageUrl: 'https://images.unsplash.com/photo-1590358669439-2aa405b38f82?q=80&w=1200', altText: 'New Arrivals', altTextAr: 'وصل حديثاً هذا الأسبوع', link: '/products?sort=newest' },
-  { id: 'banner3', imageUrl: 'https://images.unsplash.com/photo-1627384113710-424c9384f914?q=80&w=1200', altText: 'Bundle Deals', altTextAr: 'عروض الباقات للعائلات', link: '/products?category=bundles' },
+  { id: 'banner1', imageUrl: newBannerImages[0], altText: 'Medical Banner', altTextAr: 'لافتة طبية', link: '/products?tag=health' },
+  { id: 'banner2', imageUrl: newBannerImages[1], altText: 'Pharmacy Services', altTextAr: 'خدمات صيدلانية', link: '/services' },
+  { id: 'banner3', imageUrl: newBannerImages[2], altText: 'Online Pharmacy', altTextAr: 'صيدلية إلكترونية', link: '/products' },
+];
+
+export const mockSignatureBrands = [
+  {
+    id: 'brand1',
+    name: 'MOMCOZY',
+    nameAr: 'مامكوزي',
+    image: 'https://ucarecdn.com/a6511632-7d20-4e7b-9963-6e9dd6998262/-/format/auto/-/preview/3000x3000/-/quality/lighter/babycozy%20by%20momcozy-m.jpg',
+    link: '/products/mom-baby'
+  },
+  {
+    id: 'brand2',
+    name: 'VANTEVIS',
+    nameAr: 'فانتيفيس',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjLvxShYPxpBGV5h0b3Ewr7Mu8IhJF_a6dFA&s',
+    link: '/products/health-devices'
+  },
+  {
+    id: 'brand3',
+    name: 'BEST COLOR',
+    nameAr: 'بيست كولور',
+    image: 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=800&auto=format&fit=crop',
+    link: '/products/beauty'
+  },
+  {
+    id: 'brand4',
+    name: 'NATURE\'S WAY',
+    nameAr: 'نيتشرز واي',
+    image: 'https://images.unsplash.com/photo-1625072978994-78335593a233?q=80&w=800&auto=format&fit=crop',
+    link: '/products/vitamins'
+  }
 ];
 
 export const mockQuickAccessItems = (language) => [
